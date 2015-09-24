@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<form action="/survey/form/" method="get">
+    <input type="text" name="sn">
+    <input type="submit" value="Submit"><br />
+    <strong>{{ error }}</strong>
+</form>
+{% endblock %}

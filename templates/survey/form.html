@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block body_block %}
+<div class="container">
+  <div class="page-header"><h1>华贸智付通客户问卷调查</h1>
+  <p hidden="hidden">created by 江寒波</p>
+  </div>
+  <div class="row"><h3>客户基本信息</h3>
+    <div class="col-md-4">编号：</div>
+    <div class="col-md-4">智付通版本：</div>
+    <div class="col-md-4">是否开通跨行：</div>
+    <div class="col-md-4">是否开通贷记卡：</div>
+    <div class="col-md-4">是否大额报备：</div>
+  </div><br />
+  <div class="row"><h3>问卷</h3></div>
+  <div>
+  <form>
+<label>这里是单选：</label>
+<div class="radio">
+<p>
+  <label>
+      <input type="radio" name="RadioGroup1" value="A" id="RadioGroup1_0">
+      A</label>
+    <br>
+    <label>
+      <input type="radio" name="RadioGroup1" value="B" id="RadioGroup1_1">
+      B</label>
+    <br>
+    <label>
+      <input type="radio" name="RadioGroup1" value="C" id="RadioGroup1_2">
+      C</label>
+    <br>
+    <label>
+      <input type="radio" name="RadioGroup1" value="D" id="RadioGroup1_3">
+      D</label>
+    <br>
+</p>
+</div>
+<br />
+<label>现在最常用机具是哪家银行：</label>
+<div class="form-group">
+        <select class="form-control">
+          <option>工商银行</option>
+          <option>农业银行</option>
+          <option>中国银行</option>
+          <option>建设银行</option>
+          <option>交通银行</option>
+          <option>中信银行</option>
+          <option>招商银行</option>
+        </select>
+    </div>
+    <br />
+<label>这里是多选：</label>
+<div class="checkbox">
+<p>
+  <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+      A</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+      B</label>
+    <br>
+    <label>
+      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+      C</label>
+    <br>
+</p>
+</div>
+  </form>
+  </div>
+</div>
+{% endblock %}
