@@ -1,73 +1,102 @@
 {% extends 'base.html' %}
-
+{% block script_block %}
+<script>
+function fun()
+{
+if (document.getElementById("most").value=="农业银行")
+  {
+  document.getElementById("Q2div").hidden="hidden"
+  }
+else
+  {
+  document.getElementById("Q2div").hidden=""
+  }
+}
+</script>
+{% endblock %}
 {% block body_block %}
-<div class="container">
+<div class="container" >
   <div class="page-header"><h1>华贸智付通客户问卷调查</h1>
   <p hidden="hidden">created by 江寒波</p>
   </div>
   <div class="row"><h3>客户基本信息</h3>
-    <div class="col-md-4">编号：</div>
-    <div class="col-md-4">智付通版本：</div>
+    <div class="col-md-4">编号：{{ SN }}</div>
+    <div class="col-md-4">商户名称：{{ SN }}</div>
+    <div class="col-md-4">商户地址：{{ SN }}</div>
+    <div class="col-md-4">商户联系电话：{{ SN }}</div>
+    <div class="col-md-4">商户智付通版本：</div>
     <div class="col-md-4">是否开通跨行：</div>
     <div class="col-md-4">是否开通贷记卡：</div>
     <div class="col-md-4">是否大额报备：</div>
+    <div class="col-md-4">是否2015年低效、无效户：</div>
   </div><br />
   <div class="row"><h3>问卷</h3></div>
+  <p>
   <div>
-  <form>
-<label>这里是单选：</label>
+  <form action="/survey/done/" method="get" >
+  <p>
+<div class="form-horizontal">
+  <div class="form-control-static"><label for="Qversion">为何未迁移总行版：</label><input id="Qversion" type="text" class="form-control" /></div>
+  <div class="form-control-static"><label for="Qoverbank">为何未开通跨行：</label><input id="Qoverbank" type="text" class="form-control" /></div>
+  <div class="form-control-static"><label for="Qcredit">为何未开通贷记卡：</label><input id="Qcredit" type="text" class="form-control" /></div>
+  <div class="form-control-static"><label for="Qbaobei">为何未报备：</label><input id="Qbaobei" type="text" class="form-control" /></div>
+</div>
+</p>
+<p>
+<div >
+<label for="most">最常用的机具是哪家银行：</label>
+<select id="most" name="most" class="form-control" onchange="fun()">
+  <option value="农业银行">农业银行</option>
+  <option value="工商银行">工商银行</option>
+  <option value="中国银行">中国银行</option>
+  <option value="建设银行">建设银行</option>
+  <option value="交通银行">交通银行</option>
+  <option value="华夏银行">华夏银行</option>
+  <option value="中信银行">中信银行</option>
+  <option value="民生银行">民生银行</option>
+  <option value="兴业银行">兴业银行</option>
+  <option value="招商银行">招商银行</option>
+  <option value="平安银行">平安银行</option>
+  <option value="杭州银行">杭州银行</option>
+  <option value="邮储银行">邮储银行</option>
+</select>
+</div>
+</p>
+<p><div id="Q2div">
+<label for="Q2">不使用农行机具的主要原因：</label>
 <div class="radio">
-<p>
   <label>
-      <input type="radio" name="RadioGroup1" value="A" id="RadioGroup1_0">
-      A</label>
-    <br>
-    <label>
-      <input type="radio" name="RadioGroup1" value="B" id="RadioGroup1_1">
-      B</label>
-    <br>
-    <label>
-      <input type="radio" name="RadioGroup1" value="C" id="RadioGroup1_2">
-      C</label>
-    <br>
-    <label>
-      <input type="radio" name="RadioGroup1" value="D" id="RadioGroup1_3">
-      D</label>
-    <br>
-</p>
-</div>
-<br />
-<label>现在最常用机具是哪家银行：</label>
-<div class="form-group">
-        <select class="form-control">
-          <option>工商银行</option>
-          <option>农业银行</option>
-          <option>中国银行</option>
-          <option>建设银行</option>
-          <option>交通银行</option>
-          <option>中信银行</option>
-          <option>招商银行</option>
-        </select>
-    </div>
-    <br />
-<label>这里是多选：</label>
-<div class="checkbox">
-<p>
+    <input type="radio" name="Q2" value="A" id="Q2_0" />
+    缺乏优惠力度</label>
   <label>
-      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
-      A</label>
-    <br>
-    <label>
-      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
-      B</label>
-    <br>
-    <label>
-      <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
-      C</label>
-    <br>
-</p>
-</div>
-  </form>
-  </div>
+    <input type="radio" name="Q2" value="B" id="Q2_1" />
+    操作不够便捷</label>
+  <label>
+    <input type="radio" name="Q2" value="C" id="Q2_2" />
+    交易速度过慢</label>
+  <label>
+    <input type="radio" name="Q2" value="D" id="Q2_3" />
+    报修响应不及时</label>
+  <label>
+    <input type="radio" name="Q2" value="E" id="Q2_4" />
+    机具易损坏</label>
+
+</div></div></p>
+<p><div>
+<label for='hly'>是否愿意签约农行活利盈？</label>
+<select name="hly">
+  <option value="TRUE">是</option>
+  <option value="FALSE">否</option>
+</select>
+</div></p>
+<p><div>
+<label>参加九堡支行华贸客户VIP计划</label>
+<div class="row">
+  <div class="col-md-4"><label>姓名：</label><input name="name" type="text" /></div>
+  <div class="col-md-4"><label>性别：</label><select name="sex">
+    <option value="M">男</option>
+    <option value="F">女</option>
+  </select></div>
+  <div class="col-md-4"><label>手机号：</label><input name="phone" type="text" /></div>
 </div>
 {% endblock %}

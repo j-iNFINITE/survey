@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block body_block %}
-<form action="/survey/form/" method="get">
-    <input type="text" name="sn">
-    <input type="submit" value="Submit"><br />
+<div class="container">
+  <div class="page-header" align="center">
+    <div class="h3"><h3>请输入8位省行版POS编号或18位总行版用户号</h3></div>
+  </div>
+  <div align="center" class="form-inline"><form action="/survey/form/" method="get">
+    <input name="sn" type="text" class="form-control">
+    <input type="submit" class="btn-default" value="提交"><br />
     <strong>{{ error }}</strong>
-</form>
+  </form></div>
+</div>
 {% endblock %}

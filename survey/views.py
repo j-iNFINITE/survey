@@ -19,7 +19,6 @@ def form(request):
     try:
         content = answers.objects.get(SN=SN)
         context_dict['SN']=content.SN
-        context_dict['iszong']=content.iszong
         context_dict['iscredit']=content.iscredit
         context_dict['isbaobei']=content.isbaobei
         context_dict['isdone']=content.isdone
