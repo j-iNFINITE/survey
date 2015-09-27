@@ -20,6 +20,10 @@ class answers(models.Model):
     Q2_text = models.TextField(null=True) #其他内容：
     Q3_choice = models.CharField(max_length=1,null=True)  # 问题 不使用农行机具原因
     Q3_text = models.TextField(null=True)
+    hly = models.CharField(max_length=19,null=True)
+    name = models.TextField(null=True)
+    sex = models.CharField(max_length=1,null=True)
+    phone= models.IntegerField(null=True)
     isdone = models.NullBooleanField(null=True)  # 是否已完成
     def __str__(self):
         return self.SN

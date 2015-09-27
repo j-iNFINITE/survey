@@ -21,31 +21,28 @@ else
   </div>
   <div class="row"><h3>客户基本信息</h3>
     <div class="col-md-4">编号：{{ SN }}</div>
-    <div class="col-md-4">商户名称：{{ SN }}</div>
-    <div class="col-md-4">商户地址：{{ SN }}</div>
-    <div class="col-md-4">商户联系电话：{{ SN }}</div>
-    <div class="col-md-4">商户智付通版本：</div>
-    <div class="col-md-4">是否开通跨行：</div>
-    <div class="col-md-4">是否开通贷记卡：</div>
-    <div class="col-md-4">是否大额报备：</div>
-    <div class="col-md-4">是否2015年低效、无效户：</div>
+    <div class="col-md-4">商户名称：{{ m_name }}</div>
+    <div class="col-md-4">商户地址：{{ m_address }}</div>
+    <div class="col-md-4">商户联系电话：{{ m_phone }}</div>
+    <div class="col-md-4">商户智付通版本：{{ ver }}</div>
+    <div class="col-md-4">是否开通跨行：{{ isoverbank }}</div>
+    <div class="col-md-4">是否开通贷记卡：{{ iscredit }}</div>
+    <div class="col-md-4">是否大额报备：{{ isbaobei }}</div>
+    <div class="col-md-4">是否2015年低效、无效户：{{ islow }}</div>
   </div><br />
   <div class="row"><h3>问卷</h3></div>
   <p>
   <div>
-  <form action="/survey/done/" method="get" >
-  <p>
+<form action="/survey/done/" method="get" >
 <div class="form-horizontal">
-  <div class="form-control-static"><label for="Qversion">为何未迁移总行版：</label><input id="Qversion" type="text" class="form-control" /></div>
-  <div class="form-control-static"><label for="Qoverbank">为何未开通跨行：</label><input id="Qoverbank" type="text" class="form-control" /></div>
-  <div class="form-control-static"><label for="Qcredit">为何未开通贷记卡：</label><input id="Qcredit" type="text" class="form-control" /></div>
-  <div class="form-control-static"><label for="Qbaobei">为何未报备：</label><input id="Qbaobei" type="text" class="form-control" /></div>
+  <div class="form-control-static" {{ isver }}><label for="Qversion">为何未迁移总行版：</label><input id="Qversion" name="Qversion" type="text" class="form-control" /></div>
+  <div class="form-control-static" {{ isoverbankhidden }}><label for="Qoverbank">为何未开通跨行：</label><input id="Qoverbank" name="Qoverbank" type="text" class="form-control" /></div>
+  <div class="form-control-static"{{ iscredithidden }}><label for="Qcredit">为何未开通贷记卡：</label><input id="Qcredit" name="Qcredit" type="text" class="form-control" /></div>
+<div class="form-control-static"{{ isbaobeihidden }}><label for="Qbaobei">为何未报备：</label><input id="Qbaobei" name="Qbaobei" type="text" class="form-control" /></div>
 </div>
-</p>
-<p>
 <div >
 <label for="most">最常用的机具是哪家银行：</label>
-<select id="most" name="most" class="form-control" onchange="fun()">
+<select id="most" name="most" class="form-control" onchange="fun()" >
   <option value="农业银行">农业银行</option>
   <option value="工商银行">工商银行</option>
   <option value="中国银行">中国银行</option>
@@ -61,8 +58,7 @@ else
   <option value="邮储银行">邮储银行</option>
 </select>
 </div>
-</p>
-<p><div id="Q2div">
+<div id="Q2div" hidden="hidden">
 <label for="Q2">不使用农行机具的主要原因：</label>
 <div class="radio">
   <label>
@@ -80,15 +76,18 @@ else
   <label>
     <input type="radio" name="Q2" value="E" id="Q2_4" />
     机具易损坏</label>
-
-</div></div></p>
-<p><div>
+</div>
+  <label>其他原因：
+    <input type="text" name="Q2text" value="" id="Q2text" />
+    </label>
+</div>
+<div>
 <label for='hly'>是否愿意签约农行活利盈？</label>
 <select name="hly">
   <option value="TRUE">是</option>
   <option value="FALSE">否</option>
 </select>
-</div></p>
+</div>
 <p><div>
 <label>参加九堡支行华贸客户VIP计划</label>
 <div class="row">
@@ -99,4 +98,10 @@ else
   </select></div>
   <div class="col-md-4"><label>手机号：</label><input name="phone" type="text" /></div>
 </div>
+<br />
+<div align="center">
+    <input hidden name="sn" value="{{ SN }}" TYPE="text"/>
+<input type="submit" value="保存"  class="btn-lg"/>
+    </form>
+    </div>
 {% endblock %}
